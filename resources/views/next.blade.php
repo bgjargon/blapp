@@ -3,11 +3,21 @@
 
 <h1>Next Spieltag</h1>
 
-@foreach ($matches as $m)
-<div class="next-match-row">
-	<h2><img src="{{ $m->Team1->TeamIconUrl }}" />{{ $m->Team1->TeamName }} &ndash; {{ $m->Team2->TeamName }}<img src="{{ $m->Team2->TeamIconUrl }}" /></h2>
-	<h3>Play time: <span style="font-weight:normal">{{ $m->MatchDateTime }}</span></h3>
-</div>
+<table class="all-matches">
+	<thead>
+		<th>Host</th>
+		<th>Guest</th>
+		<th>Date</th>
+	</thead>
+	<tbody>
+	@foreach ($matches as $m)
+<tr>
+	<td>{{ $m->Team1->TeamName }}</td>
+	<td>{{ $m->Team2->TeamName }}</td>
+	<td>{{ $m->MatchDateTime }}</td>
+</tr>
 @endforeach
+	</tbody>
+</table>
 
 @stop

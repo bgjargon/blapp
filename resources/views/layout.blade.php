@@ -17,10 +17,15 @@ html, body { background-color: #fff; color: #636b6f; font-family: 'Nunito', sans
 .links > a { color: #636b6f; padding: 0 25px; font-size: 13px; font-weight: 600; letter-spacing: .1rem; text-decoration: none; text-transform: uppercase; }
 .m-b-md { margin-bottom: 30px; }
 
-h1 { text-transform: uppercase; }
+h1 { margin: 0 0 1em 0; text-transform: uppercase; }
 .next-match-row { padding: 11px; border-bottom: 1px solid black }
-.next-match-row h2 { font-weight: normal; }
+.next-match-row h2 { font-size: 21px; font-weight: normal; }
+.next-match-row h3 { font-size: 18px; font-weight: normal; }
 .next-match-row h2 img { margin: 0 5px; width: 24px; }
+.all-matches { width: 100%; border-collapse: collapse; border-spacing: 0; }
+.all-matches th,
+.all-matches td { padding: 10px 5px; border-style: solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.all-matches th { background: #ccc; }
 </style>
 </head>
 <body>
