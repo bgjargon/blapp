@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () { return view('welcome'); });
-Route::get('/next', function () { return view('next'); });
+Route::get('/next', 'NextMatches');
 Route::get('/all', function () { return view('all'); });
 Route::get('/winloss', function () { return view('winloss'); });
 Route::get('/search', function () { return view('search'); });

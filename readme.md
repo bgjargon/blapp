@@ -1,3 +1,16 @@
+- Next upcoming matches (following Gameday)
+https://www.openligadb.de/api/getmatchdata/bl1
+
+- All matches of the actual season
+https://www.openligadb.de/api/getmatchdata/bl1/2019/
+
+- Win/Loss Ratio of the actual season of each team 
+https://www.openligadb.de/api/getmatchdata/bl1/2019/
+
+-- Search functionality:
+- Search for a Goalgetters Name will provide the count of goals he made in the current season
+https://www.openligadb.de/api/getgoalgetters/bl1/2019
+	
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
