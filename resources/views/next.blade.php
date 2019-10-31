@@ -3,8 +3,8 @@
 
 <h1>Next Spieltag</h1>
 
-<table class="all-matches">
-	<thead>
+<table class="table">
+	<thead class="thead-light">
 		<th>Host</th>
 		<th>Guest</th>
 		<th>Date</th>
@@ -14,7 +14,7 @@
 <tr>
 	<td>{{ $m->Team1->TeamName }}</td>
 	<td>{{ $m->Team2->TeamName }}</td>
-	<td>{{ $m->MatchDateTime }}</td>
+	<td>{{ $m->mdt }}</td>
 </tr>
 @endforeach
 	</tbody>

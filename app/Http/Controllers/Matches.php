@@ -8,7 +8,12 @@ class Matches extends Controller
 {
     public function next()
     {
-        return view( 'next', ['matches' => json_decode( file_get_contents( 'https://www.openligadb.de/api/getmatchdata/bl1' ) ) ] );
+        $x = json_decode( file_get_contents( 'https://www.openligadb.de/api/getmatchdata/bl1' ) );
+        foreach ( $x as &$row ) {
+            $row->mdt = date( "d.m.Y H:i", strtotime( $row->MatchDateTime ) );
+        }
+
+        return view( 'next', ['matches' => $x ] );
     }
 
     public function all()
@@ -25,5 +30,39 @@ class Matches extends Controller
             ORDER BY m.id ASC';
         
         return view( 'all', ['matches' => \DB::select( $sql ) ] );
+    }
+
+    public function winloss()
+    {
+        $sql = '
+        SELECT 
+            t.name,
+            ( 
+                ( SELECT COUNT(*)
+                FROM matches m
+                WHERE m.match_date_time < CURDATE()
+                AND m.team1_id=t.id
+                AND m.team1_goalcount > m.team2_goalcount ) +
+                ( SELECT COUNT(*)
+                FROM matches m
+                WHERE m.match_date_time < CURDATE()
+                AND m.team2_id=t.id
+                AND m.team1_goalcount < m.team2_goalcount ) 
+            ) wins,
+            ( 
+                ( SELECT COUNT(*)
+                FROM matches m
+                WHERE m.match_date_time < CURDATE()
+                AND m.team1_id=t.id
+                AND m.team1_goalcount < m.team2_goalcount ) +
+                ( SELECT COUNT(*)
+                FROM matches m
+                WHERE m.match_date_time < CURDATE()
+                AND m.team2_id=t.id
+                AND m.team1_goalcount > m.team2_goalcount )
+            ) losses
+        FROM teams t';
+
+        return view( 'winloss', ['matches' => \DB::select( $sql ) ] );
     }
 }

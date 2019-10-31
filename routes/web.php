@@ -14,6 +14,5 @@
 Route::get('/', function () { return view('welcome'); });
 Route::get('/next', 'Matches@next');
 Route::get('/all', 'Matches@all');
-// Route::get('/all', function () { return view('all'); });
-Route::get('/winloss', function () { return view('winloss'); });
+Route::get('/winloss', 'Matches@winloss');
 Route::get('/search', function () { return view('search'); });
